@@ -31,3 +31,8 @@ streamlit.header('Fruityvice Fruit Advice!')
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
+
+# Normalize semi-structured json data into a table
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+# Write the dataframe
+streamlit.dataframe(fruityvice_normalized)
